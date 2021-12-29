@@ -1,5 +1,6 @@
 import os
 import spotipy
+import json
 from spotipy.oauth2 import SpotifyOAuth
 
 client_id = os.environ.get("CLIENT_ID")
@@ -25,7 +26,7 @@ if __name__ == "__main__":
     )
 
     res = sp.devices()
-    print(res)
+    print(json.dumps(res, indent=2))
 
     playlists = sp.current_user_playlists()
     user_id = sp.me()["id"]
