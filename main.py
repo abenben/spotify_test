@@ -28,20 +28,20 @@ if __name__ == "__main__":
     res = sp.devices()
     print(json.dumps(res, indent=2))
 
-    playlists = sp.current_user_playlists()
-    user_id = sp.me()["id"]
-
-    for playlist in playlists["items"]:
-        if playlist["owner"]["id"] == user_id:
-            print("%s¥n" % playlist["name"])
-            print("  total tracks %s¥n" % playlist["tracks"]["total"])
-
-            results = sp.playlist(playlist["id"], fields="tracks,next")
-            tracks = results["tracks"]
-            show_tracks(tracks)
-
-            while tracks["next"]:
-                tracks = sp.next(tracks)
-                show_tracks(tracks)
+    # playlists = sp.current_user_playlists()
+    # user_id = sp.me()["id"]
+    #
+    # for playlist in playlists["items"]:
+    #     if playlist["owner"]["id"] == user_id:
+    #         print("%s¥n" % playlist["name"])
+    #         print("  total tracks %s¥n" % playlist["tracks"]["total"])
+    #
+    #         results = sp.playlist(playlist["id"], fields="tracks,next")
+    #         tracks = results["tracks"]
+    #         show_tracks(tracks)
+    #
+    #         while tracks["next"]:
+    #             tracks = sp.next(tracks)
+    #             show_tracks(tracks)
 
     sp.start_playback(uris=["spotify:track:2AVbKUuvvzbPK6NIZZZvcY"])
